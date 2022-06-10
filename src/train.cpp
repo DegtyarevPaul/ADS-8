@@ -7,7 +7,7 @@ Train::Cage* create(bool light)
   return ptr;
 }
 
-Train() :first(nullptr), countOp(0) {}
+Train()::first(nullptr), countOp(0) {}
   void addCage(bool light)
   {
   if (!first)
@@ -25,7 +25,7 @@ Train() :first(nullptr), countOp(0) {}
       first->prev = ptr;
   }
 }
-int getLength()          // вычислить длину поезда
+Train()::int getLength()          // вычислить длину поезда
 {
   first->light = true;
   int ln = 0;
@@ -50,7 +50,7 @@ int getLength()          // вычислить длину поезда
   return ln;
 }
 
-int getOpCount()         // вернуть число переходов (из вагона в вагон)
+Train()::int getOpCount()         // вернуть число переходов (из вагона в вагон)
 {
   return countOp;
 }
