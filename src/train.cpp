@@ -5,12 +5,14 @@ Train::Train(): first(nullptr), countOp(0) {}
 
 void Train::addCage(bool light) {
   if (!first) {
-    first = create(light);
+    first = new Cage;
+    first->light = light;
     last = first;
     first->next = first;
     first->prev = first;
   } else {
-      Cage* ptr = create(light);
+      Cage* ptr = new Cage;
+      ptr->light = light;
       ptr->next = first;
       ptr->prev = last;
       last->next = ptr;
