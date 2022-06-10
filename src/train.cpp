@@ -1,4 +1,4 @@
-// Copyright 2021 NNTU-CS
+// Copyright 2022 DegtyarevPaul
 #include "train.h"
 
 Train::Train(): first(nullptr), countOp(0) {}
