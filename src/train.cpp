@@ -1,17 +1,14 @@
 // Copyright 2021 NNTU-CS
 #include "train.h"
-Train::Cage* create(bool light)
-{
+Train::Cage* create(bool light) {
   Cage* ptr = new Cage;
   ptr->light = light;
   return ptr;
 }
 
 Train()::first(nullptr), countOp(0) {}
-  void addCage(bool light)
-  {
-  if (!first)
-  {
+  void addCage(bool light) {
+  if (!first) {
     first = create(light);
     last = first;
     first->next = first;
@@ -25,8 +22,7 @@ Train()::first(nullptr), countOp(0) {}
       first->prev = ptr;
   }
 }
-Train()::int getLength()          // вычислить длину поезда
-{
+Train()::int getLength() {
   first->light = true;
   int ln = 0;
   Cage* temp = first;
@@ -41,7 +37,7 @@ Train()::int getLength()          // вычислить длину поезда
         for (int i = tempn; tempn>0; tempn--, countOp++) {
           temp = temp->prev;
         }
-      if (!temp->light) {
+      if (!temp -> light) {
         ln = tmp;
         break;
       }
@@ -50,7 +46,6 @@ Train()::int getLength()          // вычислить длину поезда
   return ln;
 }
 
-Train()::int getOpCount()         // вернуть число переходов (из вагона в вагон)
-{
+Train()::int getOpCount() {
   return countOp;
 }
