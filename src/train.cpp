@@ -1,57 +1,56 @@
 // Copyright 2021 NNTU-CS
 #include "train.h"
 Train::Cage* create(bool light)
-    {
-        Cage* ptr = new Cage;
-        ptr->light = light;
-        return ptr;
-    }
+{
+  Cage* ptr = new Cage;
+  ptr->light = light;
+  return ptr;
+}
 
 Train() :first(nullptr), countOp(0) {}
-    void addCage(bool light)
-    {
-        if (!first)
-        {
-            first = create(light);
-            last = first;
-            first->next = first;
-            first->prev = first;
+  void addCage(bool light)
+  {
+  if (!first)
+  {
+    first = create(light);
+    last = first;
+    first->next = first;
+    first->prev = first;
+  } else {
+      Cage* ptr = create(light);
+      ptr->next = first;
+      ptr->prev = last;
+      last->next = ptr;
+      last = ptr;
+      first->prev = ptr;
+  }
+}
+int getLength()          // вычислить длину поезда
+{
+  first->light = true;
+  int ln = 0;
+  Cage* temp = first;
+  int tempn = 0;
+  while (true) {
+    countOp++;
+    tempn++;
+    temp = temp->next;
+    if (temp->light) {
+      int tmp = tempn;
+      temp->light = false;
+        for (int i = tempn; tempn>0; tempn--, countOp++) {
+          temp = temp->prev;
         }
-        else
-        {
-            Cage* ptr = create(light);
-            ptr->next = first;
-            ptr->prev = last;
-            last->next = ptr;
-            last = ptr;
-            first->prev = ptr;
-        }
-    }
-    int getLength()          // вычислить длину поезда
-    {
-      first->light = true;
-      int ln = 0;
-      Cage* temp = first;
-      int tempn = 0;
-      while (true) {
-          countOp++;
-          tempn++;
-          temp = temp->next;
-          if (temp->light) {
-              int tmp = tempn;
-              temp->light = false;
-              for (int i = tempn; tempn>0; tempn--, countOp++) {
-                  temp = temp->prev;
-              }
-              if (!temp->light) {
-                  ln = tmp;
-                  break;
-              }
-          }
+      if (!temp->light) {
+        ln = tmp;
+        break;
       }
-      return ln;
     }
-    int getOpCount()         // вернуть число переходов (из вагона в вагон)
-    {
-        return countOp;
-    }
+  }
+  return ln;
+}
+
+int getOpCount()         // вернуть число переходов (из вагона в вагон)
+{
+  return countOp;
+}
