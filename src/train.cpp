@@ -6,7 +6,7 @@ Train::Cage* Train::create(bool light) {
   return ptr;
 }
 
-Train()::first(nullptr), countOp(0) {}
+Train::Train(): first(nullptr), countOp(0) {}
 
 void Train::addCage(bool light) {
   if (!first) {
@@ -45,7 +45,7 @@ int Train::getLength() {
     }
   }
   return ln;
-}
+};
 
 int Train::getOpCount() {
   return countOp;
