@@ -8,7 +8,11 @@ class Train {
     bool light; // состояние лампочки
     Cage *next;
     Cage *prev;
-    Train::Cage* create(bool light);
+    Train::Cage* create(bool light) {
+      Cage* ptr = new Cage;
+      ptr->light = light;
+      return ptr;
+    }
   };
   int countOp = 0; // счетчик шагов (число переходов из вагона в вагон)
   Cage *first; // точка входа в поезд (первый вагон)
