@@ -1,10 +1,5 @@
 // Copyright 2021 NNTU-CS
 #include "train.h"
-Train::Cage* Train::create(bool light) {
-  Cage* ptr = new Cage;
-  ptr->light = light;
-  return ptr;
-}
 
 Train::Train(): first(nullptr), countOp(0) {}
 
